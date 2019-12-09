@@ -49,7 +49,7 @@ matrix:
     - if: env(DEPLOY_ONLY) = true
     - script:
         - git checkout $DEPLOY_FROM
-        - npm version $DEPLOY_TYPE (for example prerelease,patch,minor)
+        - npm version $DEPLOY_TYPE
         - git push --follow-tags
         - git push origin $DEPLOY_FROM:$DEPLOY_TO
         - git checkout master
