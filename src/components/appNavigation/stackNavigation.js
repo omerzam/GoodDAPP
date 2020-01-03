@@ -1,7 +1,7 @@
 // @flow
 import React, { Component, useEffect, useState } from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
-// import SideMenu from 'react-native-side-menu-gooddapp'
+import SideMenu from 'react-native-side-menu-gooddapp'
 import { createNavigator, Route, SceneView, SwitchRouter } from '@react-navigation/core'
 import { withStyles } from '../../lib/styles'
 import SimpleStore from '../../lib/undux/SimpleStore'
@@ -248,19 +248,18 @@ class AppView extends Component<AppViewProps, AppViewState> {
     const { visible: dialogVisible } = (store.get('currentScreen') || {}).dialogData || {}
     const currentFeed = store.get('currentFeed')
     const menu = open ? <SideMenuPanel navigation={navigation} /> : null
-
     return (
       <React.Fragment>
-        {/*<View style={[styles.sideMenuContainer, open ? styles.menuOpenStyle : {}]}>*/}
-        {/*  <SideMenu*/}
-        {/*    menu={menu}*/}
-        {/*    menuPosition="right"*/}
-        {/*    isOpen={open}*/}
-        {/*    disableGestures={true}*/}
-        {/*    onChange={this.sideMenuSwap}*/}
-        {/*  />*/}
-        {/*</View>*/}
-        {/*<Blurred style={fullScreenContainer} blur={open || dialogVisible || currentFeed}>*/}
+        <View style={[styles.sideMenuContainer, open ? styles.menuOpenStyle : styles.hideMenu]}>
+          <SideMenu
+            menu={menu}
+            menuPosition="right"
+            isOpen={open}
+            disableGestures={true}
+            onChange={this.sideMenuSwap}
+          />
+        </View>
+        {/* <Blurred style={fullScreenContainer} blur={open || dialogVisible || currentFeed}> */}
         {!navigationBarHidden &&
           (NavigationBar ? (
             <NavigationBar />
@@ -274,7 +273,7 @@ class AppView extends Component<AppViewProps, AppViewState> {
             <SceneView navigation={descriptor.navigation} component={Component} screenProps={screenProps} />
           </ScrollView>
         )}
-        {/*</Blurred>*/}
+        {/* </Blurred> */}
       </React.Fragment>
     )
   }
@@ -311,6 +310,9 @@ const styles = StyleSheet.create({
   },
   menuOpenStyle: {
     transform: [{ translateX: '0vh' }],
+  },
+  hideMenu: {
+    display: 'none',
   },
 })
 

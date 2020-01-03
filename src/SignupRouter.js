@@ -30,8 +30,7 @@ const router = createSwitchNavigator(
   }
 )
 
-const RouterWrapper = Platform.OS === 'web' ?
-  createBrowserApp(router) : createAppContainer(router)
+const RouterWrapper = Platform.OS === 'web' ? createBrowserApp(router) : createAppContainer(router)
 
 const fullScreenContainer = {
   top: 0,
