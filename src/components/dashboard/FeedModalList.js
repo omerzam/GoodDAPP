@@ -5,7 +5,7 @@ import { Portal } from 'react-native-paper'
 import _once from 'lodash/once'
 import { withStyles } from '../../lib/styles'
 import { getScreenWidth } from '../../lib/utils/Orientation'
-import { CARD_SLIDE, fireEvent } from '../../lib/analytics/analytics'
+// import { CARD_SLIDE, fireEvent } from '../../lib/analytics/analytics'
 import FeedModalItem from './FeedItems/FeedModalItem'
 const VIEWABILITY_CONFIG = {
   minimumViewTime: 3000,
@@ -91,7 +91,7 @@ const FeedModalList = ({
   )
 
   const slideEvent = _once(() => {
-    fireEvent(CARD_SLIDE)
+    // fireEvent(CARD_SLIDE)
   })
 
   const feeds = data && data instanceof Array && data.length ? data : undefined

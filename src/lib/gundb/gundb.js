@@ -1,4 +1,4 @@
-import Gun from 'gun'
+import Gun from 'gun/gun'
 import 'gun/lib/radix'
 import 'gun/lib/radisk'
 import 'gun/lib/store'

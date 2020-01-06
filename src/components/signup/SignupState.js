@@ -54,7 +54,7 @@ const Signup = ({ navigation }: { navigation: any, screenProps: any }) => {
     ...getUserModel({
       email: w3UserFromProps.email || '',
       fullName: w3UserFromProps.full_name || '',
-      mobile: '',
+      mobile: '+59892191067',
     }),
     smsValidated: false,
     isEmailConfirmed: false,
@@ -167,6 +167,7 @@ const Signup = ({ navigation }: { navigation: any, screenProps: any }) => {
 
     //lazy login in background
     const ready = (async () => {
+      debugger
       log.debug('ready: Starting initialization')
       const { init } = await import('../../init')
       const login = import('../../lib/login/GoodWalletLogin')

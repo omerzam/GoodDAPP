@@ -7,19 +7,23 @@ import Splash from './components/splash/Splash'
 import { delay } from './lib/utils/async'
 import { extractQueryParams } from './lib/share/index'
 import logger from './lib/logger/pino-logger'
-import { fireEvent, initAnalytics, SIGNIN_FAILED, SIGNIN_SUCCESS } from './lib/analytics/analytics'
+// import { fireEvent, initAnalytics, SIGNIN_FAILED, SIGNIN_SUCCESS } from './lib/analytics/analytics'
 import Config from './config/config'
 
 const log = logger.child({ from: 'RouterSelector' })
 log.debug({ Config })
 
 // import Router from './SignupRouter'
+// let SignupRouter = React.lazy(() =>
+//   initAnalytics()
+//     .then(_ =>
+//       Promise.all([import(/* webpackChunkName: "signuprouter" */ './SignupRouter'), handleLinks(), delay(2000)])
+//     )
+//     .then(r => r[0])
+// )
+
 let SignupRouter = React.lazy(() =>
-  initAnalytics()
-    .then(_ =>
-      Promise.all([import(/* webpackChunkName: "signuprouter" */ './SignupRouter'), handleLinks(), delay(2000)])
-    )
-    .then(r => r[0])
+  Promise.all([import(/* webpackChunkName: "signuprouter" */ './SignupRouter'), handleLinks(), delay(2000)]).then(r => r[0])
 )
 
 /**
@@ -52,7 +56,7 @@ const handleLinks = async () => {
           const { saveMnemonics } = await mnemonicsHelpers
           await saveMnemonics(mnemonic)
           await AsyncStorage.setItem('GD_isLoggedIn', 'true')
-          fireEvent(SIGNIN_SUCCESS)
+          // fireEvent(SIGNIN_SUCCESS)
           window.location = '/'
         }
       }
@@ -72,7 +76,7 @@ const handleLinks = async () => {
   } catch (e) {
     if (params.magiclink) {
       log.error('Magiclink signin failed', e.message, e)
-      fireEvent(SIGNIN_FAILED)
+      // fireEvent(SIGNIN_FAILED)
     } else {
       log.error('parsing in-app link failed', e.message, e, params)
     }

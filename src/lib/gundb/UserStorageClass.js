@@ -13,7 +13,8 @@ import values from 'lodash/values'
 import get from 'lodash/get'
 import isEmail from 'validator/lib/isEmail'
 import moment from 'moment'
-import { Gun, SEA } from 'gun'
+import Gun from 'gun/gun'
+import 'gun/sea'
 import Config from '../../config/config'
 import API from '../API/api'
 import pino from '../logger/pino-logger'
@@ -462,7 +463,6 @@ export class UserStorage {
       .then(() => this.init())
       .then(() => logger.debug('userStorage initialized.'))
       .catch(e => {
-        debugger
         logger.error('Error initializing UserStorage', e.message, e, { account: this.wallet.account })
         return false
       })
@@ -524,7 +524,8 @@ export class UserStorage {
     }
 
     // this causes gun create user only on non-incognito to hang if user doesnt exists i have no freaking idea why
-    //const existingUsername = await this.gun.get('~@' + username)
+    // const existingUsername = await this.gun.get('~@' + username)
+    // TODO gunCreate fails saying the account already exists
     const existingUsername = false
     logger.debug('init existing username:', { existingUsername })
     let loggedInPromise

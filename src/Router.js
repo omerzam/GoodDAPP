@@ -10,7 +10,7 @@ import BackupWallet from './components/backupWallet/BackupWalletState'
 import AppNavigation from './components/appNavigation/AppNavigation'
 import AppSwitch from './components/appSwitch/AppSwitch'
 import GDStore from './lib/undux/GDStore'
-import { fireEventFromNavigation } from './lib/analytics/analytics'
+// import { fireEventFromNavigation } from './lib/analytics/analytics'
 import { createAppContainer } from 'react-navigation'
 
 const AppNavigator = createNavigator(
@@ -31,7 +31,7 @@ const AppNavigator = createNavigator(
 const RouterWrapper = Platform.OS === 'web' ? createBrowserApp(AppNavigator) : createAppContainer(AppNavigator)
 
 const onRouteChange = (prevNav, nav, route) => {
-  fireEventFromNavigation(route)
+  // fireEventFromNavigation(route)
 }
 const Router = () => {
   return (

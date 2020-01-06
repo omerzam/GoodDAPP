@@ -40,6 +40,6 @@ if (typeof atob === 'undefined') {
 // crypto is loaded first, so it can populate global.crypto
 require('crypto')
 
-global.crypto = require('crypto');
+//global.crypto = require('crypto');
 
-global.location = {protocol: 'file:'};
+//global.location = {protocol: 'file:'};

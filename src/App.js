@@ -74,6 +74,12 @@ const AppHolder = () => {
         await upgradeVersion()
       }
 
+      // try {
+      //   await require('isomorphic-webcrypto').ensureSecure()
+      // } catch (e) {
+      //   console.error(e)
+      // }
+
       await initStore()
       setReady(true)
     })()

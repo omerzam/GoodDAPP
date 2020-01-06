@@ -147,6 +147,7 @@ class API {
    * @param {UserRecord} user
    */
   sendOTP(user: UserRecord): AxiosPromise<any> {
+    debugger
     return this.client.post('/verify/sendotp', { user })
   }
 

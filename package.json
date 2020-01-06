@@ -99,6 +99,7 @@
     "react-native-safe-area-context": "^0.6.1",
     "react-native-safe-area-view": "^1.0.0",
     "react-native-screens": "^2.0.0-alpha.22",
+    "react-native-securerandom": "^1.0.0-rc.0",
     "react-native-side-menu-gooddapp": "^2.0.2",
     "react-native-svg": "^9.13.6",
     "react-native-svg-asset-plugin": "^0.3.0",

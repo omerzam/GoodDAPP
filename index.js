@@ -12,7 +12,7 @@ import 'gun-asyncstorage'
 
 import './shim'
 
-const DeApp  = () => (
+const DeApp = () => (
   <SafeAreaProvider>
     <App />
   </SafeAreaProvider>
