@@ -127,6 +127,7 @@ const getStylesFromProps = ({ theme }) => {
     },
     avatar: {
       backgroundColor: theme.colors.lightGray,
+
       // borderRadius: '50%',
       height: 34,
       marginRight: 7,

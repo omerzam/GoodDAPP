@@ -23,21 +23,13 @@ export default (props: Props) => {
     countryCode = `+${ref.current.getCountryCode()}`
   }
 
-  const phoneNumber = ref.current ?
-    props.value.replace(countryCode, '') : props.value
+  const phoneNumber = ref.current ? props.value.replace(countryCode, '') : props.value
 
-  return (
-    <PhoneInput
-      ref={ref}
-      value={phoneNumber}
-      onChangePhoneNumber={onChange}
-      textStyle={styles.textStyle}
-    />
-  )
+  return <PhoneInput ref={ref} value={phoneNumber} onChangePhoneNumber={onChange} textStyle={styles.textStyle} />
 }
 
 const styles = StyleSheet.create({
   textStyle: {
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
   },
 })

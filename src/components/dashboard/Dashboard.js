@@ -40,6 +40,7 @@ import { extractQueryParams, readCode } from '../../lib/share'
 import { deleteAccountDialog } from '../sidemenu/SideMenuPanel'
 import config from '../../config/config'
 import LoadingIcon from '../common/modal/LoadingIcon'
+
 // import RewardsTab from './Rewards'
 // import MarketTab from './Marketplace'
 import Amount from './Amount'
@@ -54,6 +55,7 @@ import ReceiveSummary from './ReceiveSummary'
 import ReceiveConfirmation from './ReceiveConfirmation'
 import SendByQR from './SendByQR'
 import ReceiveByQR from './ReceiveByQR'
+
 // import SendConfirmation from './SendConfirmation'
 import SendLinkSummary from './SendLinkSummary'
 import SendQRSummary from './SendQRSummary'
@@ -155,7 +157,7 @@ const Dashboard = props => {
   }
 
   const handleAppLinks = () => {
-//FIXME: RN
+    //FIXME: RN
     const anyParams = extractQueryParams('')
 
     log.debug('handle links effect dashboard', { anyParams })
@@ -601,6 +603,7 @@ export default createStackNavigator({
     path: ':action/ReceiveConfirmation',
   },
   SendLinkSummary,
+
   // SendConfirmation,
   SendByQR,
   ReceiveByQR,
@@ -617,6 +620,7 @@ export default createStackNavigator({
   FAQ,
   Recover: Mnemonics,
   OutOfGasError,
+
   // Rewards: {
   //   screen: RewardsTab,
   //   path: 'Rewards/:rewardsPath*',
