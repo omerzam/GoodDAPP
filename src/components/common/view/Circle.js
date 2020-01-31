@@ -20,7 +20,7 @@ class Circle extends React.Component {
     return (
       <View style={[styles.mainBlock, !!subText && styles.alignMainBlockCenter]}>
         <View style={styles.circle}>
-          <Text fontFamily="slab" style={styles.circleNumber} fontWeight="bold" fontSize={20}>
+          <Text fontFamily="slab" style={styles.circleNumber} fontWeight="bold" fontSize={24} color="#ffffff">
             {number}
           </Text>
         </View>
@@ -38,9 +38,9 @@ class Circle extends React.Component {
 const getStylesFromProps = ({ theme }) => {
   return {
     mainBlock: {
+      alignItems: 'baseline',
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'center',
     },
     alignMainBlockCenter: {
       alignItems: 'center',
@@ -62,15 +62,14 @@ const getStylesFromProps = ({ theme }) => {
         web: '50%',
         default: 43 / 2,
       }),
-
-      //FIXME: RN
+      height: 43,
+      // FIXME: RN
       ...Platform.select({
         web: {
           boxShadow: '6px 1px 0 rgba(12, 38, 61, 0.15)',
         },
       }),
       marginTop: theme.sizes.default,
-      height: 43,
       width: 43,
     },
     text: {

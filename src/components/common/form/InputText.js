@@ -82,7 +82,6 @@ const getStylesFromProps = ({ theme }) => ({
     ...theme.fontStyle,
     backgroundColor: theme.colors.surface,
     borderBottomColor: theme.colors.darkGray,
-
     // FIXME: RN
     ...Platform.select({
       web: {

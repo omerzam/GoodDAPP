@@ -71,7 +71,7 @@ const Signin = props => {
           </View>
         </Section.Row>
       </Wrapper>
-      <Section.Row alignItems="center" justifyContent="center">
+      <Section.Row alignItems="center" justifyContent="center" style={styles.row}>
         <TouchableOpacity onPress={handleRecover}>
           <Section.Text
             fontWeight="medium"
@@ -84,7 +84,7 @@ const Signin = props => {
           </Section.Text>
         </TouchableOpacity>
       </Section.Row>
-      <Section.Row alignItems="center" justifyContent="center">
+      <Section.Row alignItems="center" justifyContent="center" style={styles.row}>
         <TouchableOpacity onPress={goToSupport}>
           <Section.Text
             fontWeight="medium"

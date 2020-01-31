@@ -8,7 +8,7 @@ if (Platform.OS === 'web') {
   Image.prefetch(LoadingIconSVG)
 }
 
-const LoadingIcon = ({ styles, style }) => {
+const LoadingIcon = ({ styles, style, loadingIconStyle }) => {
   const [rotateValue] = useState(new Animated.Value(0))
 
   useEffect(() => {
@@ -37,6 +37,7 @@ const LoadingIcon = ({ styles, style }) => {
             ],
           },
           styles.loadingIcon,
+          loadingIconStyle,
         ]}
         source={LoadingIconSVG}
       />
