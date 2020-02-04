@@ -1,11 +1,11 @@
 // @flow
 import React, { createRef, useEffect, useState } from 'react'
-import { FlatList, View, Platform, Dimensions } from 'react-native'
+import { FlatList, View, Platform } from 'react-native'
 import { isMobileOnly } from 'mobile-device-detect'
 import { Portal } from 'react-native-paper'
 import _once from 'lodash/once'
 import { withStyles } from '../../lib/styles'
-import { getMaxDeviceWidth, getScreenWidth } from '../../lib/utils/Orientation'
+import { getMaxDeviceWidth, getScreenHeight, getScreenWidth } from '../../lib/utils/Orientation'
 import { CARD_SLIDE, fireEvent } from '../../lib/analytics/analytics'
 import FeedModalItem from './FeedItems/FeedModalItem'
 const VIEWABILITY_CONFIG = {

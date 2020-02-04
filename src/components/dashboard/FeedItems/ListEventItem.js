@@ -155,7 +155,7 @@ const FeedText = withStyles(getFeedTextStyles)(({ styles, feed, isSmallDevice })
       break
 
     case 'claiming':
-      result = isSmallDevice ? <ReadMoreText text="daily G$" /> : ''
+      result = isSmallDevice ? <ReadMoreText text="daily G$" /> : null
       break
 
     case 'hanukaStarts':
