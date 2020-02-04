@@ -77,7 +77,7 @@ const ReceiveAmount = ({ screenProps, styles, ...props }: ReceiveProps) => {
                 </View>
               </Section.Row>
               <Section.Title fontWeight="medium">YOU ARE REQUESTING</Section.Title>
-              <Section.Row justifyContent="center" fontWeight="medium" style={styles.amountWrapper}>
+              <Section.Row fontWeight="medium" style={styles.amountWrapper}>
                 <BigGoodDollar
                   number={amount}
                   color="green"
