@@ -1,19 +1,20 @@
 // @flow
 import React, { createRef, useEffect, useState } from 'react'
-import { FlatList, Platform, View } from 'react-native'
+import { FlatList, View, Platform } from 'react-native'
+import { isMobileOnly } from 'mobile-device-detect'
 import { Portal } from 'react-native-paper'
 import _once from 'lodash/once'
 import { withStyles } from '../../lib/styles'
-import { getScreenHeight, getScreenWidth } from '../../lib/utils/Orientation'
+import { getMaxDeviceWidth, getScreenHeight, getScreenWidth } from '../../lib/utils/Orientation'
 import { CARD_SLIDE, fireEvent } from '../../lib/analytics/analytics'
 import FeedModalItem from './FeedItems/FeedModalItem'
-
 const VIEWABILITY_CONFIG = {
   minimumViewTime: 3000,
   viewAreaCoveragePercentThreshold: 100,
   waitForInteraction: true,
 }
 
+const maxScreenWidth = getMaxDeviceWidth()
 const emptyFeed = { type: 'empty', data: {} }
 
 export type FeedModalListProps = {
@@ -82,13 +83,15 @@ const FeedModalList = ({
   }
 
   const renderItemComponent = ({ item, separators, index }: ItemComponentProps) => (
-    <FeedModalItem
-      navigation={navigation}
-      item={item}
-      separators={separators}
-      fixedHeight
-      onPress={() => handleFeedSelection(item, false)}
-    />
+    <View style={styles.horizontalListItem}>
+      <FeedModalItem
+        navigation={navigation}
+        item={item}
+        separators={separators}
+        fixedHeight
+        onPress={() => handleFeedSelection(item, false)}
+      />
+    </View>
   )
 
   const slideEvent = _once(() => {
@@ -109,7 +112,7 @@ const FeedModalList = ({
               setLoading(false)
             }
           }}
-          contentContainerStyle={styles.horizontalList}
+          contentContainerStyle={[styles.horizontalList, !isMobileOnly && { justifyContent: 'center' }]}
           data={feeds && feeds.length ? feeds : [emptyFeed]}
           getItemLayout={getItemLayout}
           initialNumToRender={selectedFeed ? Math.abs(data.findIndex(item => item.id === selectedFeed.id)) : 1}
@@ -158,6 +161,9 @@ const getStylesFromProps = ({ theme }) => ({
       default: getScreenWidth(),
     }),
     flex: 1,
+  },
+  horizontalListItem: {
+    width: maxScreenWidth,
   },
   flatList: {
     // FIXME: RN
