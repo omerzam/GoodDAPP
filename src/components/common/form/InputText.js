@@ -53,9 +53,7 @@ const InputText = ({ error, onCleanUpField, styles, theme, style, getRef, ...pro
           style={[styles.input, inputStyle, style]}
           placeholderTextColor={theme.colors.gray50Percent}
           onFocus={() => {
-            if (shouldChangeSizeOnKeyboardShown) {
-              onFocusMobileSafari()
-            }
+            onFocus()
             if (props.onFocus) {
               props.onFocus()
             }
