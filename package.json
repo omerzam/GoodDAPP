@@ -270,7 +270,7 @@
       },
       "ios.sim.release": {
         "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/GoodDollar.app",
-        "build": "xcodebuild -project ios/GoodDollar.xcodeproje -scheme GoodDollar -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -UseNewBuildSystem=NO",
+        "build": "xcodebuild -project ios/GoodDollar.xcodeproj -scheme GoodDollar -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -UseNewBuildSystem=NO",
         "type": "ios.simulator",
         "device": {
           "type": "iPhone 11"
