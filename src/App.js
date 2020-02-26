@@ -1,6 +1,6 @@
 // @flow
 import React, { useEffect, useMemo, useState } from 'react'
-import { AsyncStorage, Platform } from 'react-native'
+import { AsyncStorage, Linking, Platform } from 'react-native'
 import { Provider as PaperProvider } from 'react-native-paper'
 import { ActionSheetProvider } from '@expo/react-native-action-sheet'
 import { isMobile } from './lib/utils/platform'
@@ -20,6 +20,7 @@ const App = () => {
   const store = SimpleStore.useStore()
   const isLoggedIn = store.get('isLoggedIn')
   useEffect(() => {
+    linking()
     setInitFunctions(store.set('wallet'), store.set('userStorage'))
   }, [])
 
@@ -27,6 +28,27 @@ const App = () => {
 
   const continueWithDesktop = () => {
     setUseDesktop(true)
+  }
+
+  const linking = () => {
+    Linking.getInitialURL()
+      .then(url => {
+        if (url) {
+          console.log('Initial url is: ' + url)
+        }
+      })
+      .catch(err => console.error('An error occurred', err))
+  }
+
+  useEffect(() => {
+    Linking.addEventListener('url', _handleOpenURL)
+    return () => {
+      Linking.removeEventListener('url', _handleOpenURL)
+    }
+  }, [])
+
+  const _handleOpenURL = event => {
+    console.log(event.url, 'calling')
   }
 
   const SplashOrRouter =
