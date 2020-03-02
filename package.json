@@ -262,13 +262,13 @@
     "configurations": {
       "ios.sim.debug": {
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/GoodDollar.app",
-        "build": "xcodebuild -project ios/GoodDollar.project -scheme GoodDollar -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "build": "xcodebuild -project ios/GoodDollar.xcodeproj -scheme GoodDollar -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 11"
       },
       "ios.sim.release": {
         "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/GoodDollar.app",
-        "build": "xcodebuild -project ios/GoodDollar.project -scheme GoodDollar -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+        "build": "xcodebuild -project ios/GoodDollar.xcodeproj -scheme GoodDollar -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 11"
       },
