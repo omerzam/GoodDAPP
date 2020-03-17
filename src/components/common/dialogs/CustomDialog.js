@@ -65,6 +65,9 @@ const CustomDialog = ({
   const modalColor = getColorFromType(type)
   const textColor = type === 'error' ? 'red' : 'darkGray'
   const color = theme.colors[textColor]
+
+  const hasTitle = title && title.trim().length > 0 ? true : false
+
   return visible ? (
     <Portal>
       <ModalWrapper
@@ -77,7 +80,7 @@ const CustomDialog = ({
         isMinHeight={isMinHeight}
       >
         <React.Fragment>
-          {title && (
+          {hasTitle && (
             <Text color={textColor} fontFamily="slab" fontSize={24} fontWeight="bold" style={styles.title}>
               {title}
             </Text>
@@ -94,7 +97,7 @@ const CustomDialog = ({
               </>
             )}
           </View>
-          {showButtons ? (
+          {showButtons && (
             <View style={buttonsContainerStyle || styles.buttonsContainer}>
               {buttons ? (
                 buttons.map(({ onPress = dismiss => dismiss(), style, ...buttonProps }, index) => (
@@ -115,7 +118,7 @@ const CustomDialog = ({
                 </CustomButton>
               )}
             </View>
-          ) : null}
+          )}
         </React.Fragment>
       </ModalWrapper>
     </Portal>
@@ -165,6 +168,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flexGrow: 1,
     padding: 0,
+    alignItems: 'center',
   },
   buttonsContainer: {
     display: 'flex',

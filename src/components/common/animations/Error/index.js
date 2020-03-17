@@ -17,6 +17,7 @@ class Error extends React.Component {
           marginHorizontal: 'auto',
           paddingTop: 20,
           paddingBottom: 20,
+          alignItems: 'center',
         }}
         loop={false}
       />
