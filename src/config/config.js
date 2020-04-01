@@ -29,6 +29,7 @@ const Config = {
   withMockedFeeds: process.env.REACT_APP_WITH_MOCKED_FEEDS === 'true',
   safariMobileKeyboardGuidedSize: process.env.REACT_APP_SAFARI_MOBILE_KEYBOARD_GUIDED_SIZE === 'true',
   receiveUrl: process.env.REACT_APP_RECEIVE_URL || `${publicUrl}`,
+  enableShortUrl: process.env.REACT_APP_ENABLE_SHORTURL === 'true',
   sendUrl: process.env.REACT_APP_SEND_URL || `${publicUrl}`,
   nextTimeClaim: process.env.REACT_APP_NEXT_TIME_CLAIM || 86400,
   displayStartClaimingCardTime: process.env.REACT_APP_DISPLAY_START_CLAIMING_CARD_TIME || 3 * 24 * 60 * 60 * 1000, // 3 days
