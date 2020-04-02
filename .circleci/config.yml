@@ -17,6 +17,8 @@ jobs:
   install_deps:
     executor: rn/linux_js
     steps:
+      - attach_workspace:
+            at: .
       - rn/yarn_install
 
 workflows:
