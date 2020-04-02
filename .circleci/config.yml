@@ -27,10 +27,10 @@ workflows:
       # Checkout the code and persist to the Workspace
       # Note: This is a job which is defined above and not part of the Orb
       - checkout_code
-      
+
       - install_deps
         requires:
-              - checkout_code
+          - checkout_code
 
       # Build and test the Android app in release mode
       # Note: We split these into seperate jobs because we can build the Android app on a Linux machine and preserve the expensive MacOS executor minutes for when it's required
