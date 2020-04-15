@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { AppState, AsyncStorage } from 'react-native'
 import { SceneView } from '@react-navigation/core'
-import _get from 'lodash/get'
-import _debounce from 'lodash/debounce'
+import { debounce, get } from 'lodash'
 import moment from 'moment'
 import { DESTINATION_PATH } from '../../lib/constants/localStorage'
 import logger from '../../lib/logger/pino-logger'
@@ -28,7 +27,7 @@ const log = logger.child({ from: 'AppSwitch' })
 
 const MIN_BALANCE_VALUE = '100000'
 const GAS_CHECK_DEBOUNCE_TIME = 1000
-const showOutOfGasError = _debounce(
+const showOutOfGasError = debounce(
   async props => {
     const gasResult = await goodWallet.verifyHasGas(goodWallet.wallet.utils.toWei(MIN_BALANCE_VALUE, 'gwei'), {
       topWallet: false,
@@ -135,7 +134,7 @@ const AppSwitch = (props: LoadingProps) => {
     //     props.navigation.navigate('Auth')
     //   } else {
     //     // TODO: handle other statuses (4xx, 5xx), consider exponential backoff
-    //     log.error('Failed to sign in', credsOrError)
+    //     log.error('Failed to sign in', 'Failed to sign in', new Error('Failed to sign in'), { credsOrError })
     //     props.navigation.navigate('Auth')
     //   }
     // }
@@ -176,7 +175,7 @@ const AppSwitch = (props: LoadingProps) => {
       try {
         const response = await API.getLoginToken()
 
-        const _loginToken = _get(response, 'data.loginToken')
+        const _loginToken = get(response, 'data.loginToken')
 
         if (_loginToken) {
           await userStorage.setProfileField('loginToken', _loginToken, 'private')
@@ -247,7 +246,7 @@ const AppSwitch = (props: LoadingProps) => {
   const display = ready ? (
     <SceneView navigation={descriptor.navigation} component={descriptor.getComponent()} />
   ) : (
-    <Splash />
+    <Splash animation={false} />
   )
   return <React.Fragment>{display}</React.Fragment>
 }
