@@ -32,7 +32,7 @@ const log = logger.child({ from: 'Auth' })
 
 class Auth extends React.Component<Props> {
   state = {
-    asGuest: config.isEToro !== true,
+    asGuest: true,
     withW3Token: false,
     w3User: undefined,
   }
