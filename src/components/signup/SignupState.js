@@ -372,7 +372,7 @@ const Signup = ({ navigation }: { navigation: any, screenProps: any }) => {
 
         const { data } = await API.sendVerificationEmail(newState)
         if (data.ok === 0) {
-          return showErrorDialog('Could not send verification email. Please try again')
+          return showErrorDialog(data.error || 'Could not send verification email. Please try again')
         }
         log.debug('skipping email verification?', { ...data, skip: Config.skipEmailVerification })
         if (Config.skipEmailVerification || data.onlyInEnv) {
