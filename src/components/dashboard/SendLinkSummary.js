@@ -121,6 +121,8 @@ const SendLinkSummary = ({ screenProps, styles }: AmountProps) => {
   }, [setLoading, address, amount, reason, showDialog, showErrorDialog])
 
   const sendViaLink = useCallback(async () => {
+    setLoading(true)
+
     try {
       let paymentLink = await getLink()
 
@@ -134,6 +136,8 @@ const SendLinkSummary = ({ screenProps, styles }: AmountProps) => {
     } catch (e) {
       showErrorDialog('Could not complete transaction. Please try again.')
       log.error('Something went wrong while trying to generate send link', e.message, e)
+    } finally {
+      setLoading(false)
     }
   }, [...shareStringStateDepSource, generateSendShareText, canShare, push])
 
