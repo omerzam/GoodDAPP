@@ -1,13 +1,28 @@
 // @flow
-import { noop, over } from 'lodash'
+import { constant, noop, over } from 'lodash'
 
-//import Zoom, { ZoomUxEvent } from 'react-native-zoom' // eslint-disable-line
+// import Zoom, { ZoomUxEvent } from 'react-native-zoom'
 
 import api from '../../../../lib/API/api'
 import Config from '../../../../config/config'
 import logger from '../../../../lib/logger/pino-logger'
 
 // export { ZoomSDKStatus, ZoomSessionStatus } from 'react-native-zoom'
+// API stubs
+export const ZoomUxEvent = {}
+export const ZoomSDKStatus = {}
+export const ZoomSessionStatus = {}
+const noopAsync = async () => {}
+
+const Zoom = {
+  sdk: {
+    addListener: constant(noop),
+    preload: noopAsync,
+    initialize: noopAsync,
+    enroll: noopAsync,
+    unload: noopAsync,
+  },
+}
 
 // sdk class
 export const ZoomSDK = new class {
@@ -21,7 +36,7 @@ export const ZoomSDK = new class {
     const { sdk, logger } = this
 
     try {
-      sdk.preload && (await sdk.preload())
+      await sdk.preload()
     } catch (exception) {
       const { message } = exception
 
@@ -57,7 +72,6 @@ export const ZoomSDK = new class {
 
   async faceVerification(enrollmentIdentifier, onUIReady = noop, onCaptureDone = noop, onRetry = noop) {
     const { sdk, logger } = this
-    // eslint-disable-next-line no-undef
     const { UI_READY, CAPTURE_DONE, FV_RETRY } = ZoomUxEvent
 
     // addListener calls returns unsubscibe functions we're storing in this array
@@ -100,4 +114,4 @@ export const ZoomSDK = new class {
       throw exception
     }
   }
-}(/*Zoom.sdk, */logger.child({ from: 'ZoomSDK.native' })) // eslint-disable-line
+}(Zoom.sdk, logger.child({ from: 'ZoomSDK.native' })) // eslint-disable-line

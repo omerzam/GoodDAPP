@@ -3,6 +3,7 @@ import { createConnectedStore } from 'undux'
 import { isString } from 'lodash'
 import AsyncStorage from '../utils/asyncStorage'
 
+import AsyncStorage from '../../lib/utils/asyncStorage'
 import { IS_LOGGED_IN } from '../constants/localStorage'
 import pinoLogger from '../logger/pino-logger'
 import createStoreEffects, { unduxLogger } from './plugins'

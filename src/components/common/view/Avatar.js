@@ -3,8 +3,9 @@ import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import { Avatar } from 'react-native-paper'
 import UnknownProfileSVG from '../../../assets/unknownProfile.svg'
-import { withStyles } from '../../../lib/styles'
 import useOnPress from '../../../lib/hooks/useOnPress'
+import { isMobileNative } from '../../../lib/utils/platform'
+import { withStyles } from '../../../lib/styles'
 
 /**
  * Touchable Avatar
@@ -25,20 +26,20 @@ const CustomAvatar = ({ styles, style, source, onPress, size, imageSize, childre
       style={[styles.avatarContainer, { width: size, height: size, borderRadius: size / 2 }, style]}
       underlayColor="#fff"
     >
-      {source ? (
-        <Avatar.Image
-          size={imageSize || size - 2}
-          source={{ uri: source }}
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
-          {...avatarProps}
-        />
-      ) : (
+      {isMobileNative && !source ? (
         <View
           style={[{ width: size, height: size, backgroundColor: 'rgba(0, 0, 0, 0)' }, unknownStyle]}
           {...avatarProps}
         >
           <UnknownProfileSVG />
         </View>
+      ) : (
+        <Avatar.Image
+          size={imageSize || size - 2}
+          source={{ uri: source || UnknownProfileSVG }}
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
+          {...avatarProps}
+        />
       )}
       {children}
     </TouchableOpacity>

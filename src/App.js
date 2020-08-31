@@ -8,14 +8,15 @@ import { isMobile } from './lib/utils/platform'
 import './lib/gundb/gundb'
 import { theme } from './components/theme/styles'
 import SimpleStore, { initStore } from './lib/undux/SimpleStore'
+import RouterSelector from './RouterSelector'
 import LoadingIndicator from './components/common/view/LoadingIndicator'
 import SplashDesktop from './components/splash/SplashDesktop'
+import logger from './lib/logger/pino-logger'
 import { SimpleStoreDialog } from './components/common/dialogs/CustomDialog'
 import useServiceWorker from './lib/utils/useServiceWorker'
 import Config from './config/config'
-import RouterSelector from './RouterSelector'
-import logger from './lib/logger/pino-logger'
 import { deleteGunDB } from './lib/hooks/useDeleteAccountDialog'
+
 const log = logger.child({ from: 'App' })
 
 const SplashOrRouter = memo(({ store }) => {
@@ -31,9 +32,10 @@ const SplashOrRouter = memo(({ store }) => {
 })
 
 const App = () => {
-  useServiceWorker() // Only runs on Web
-  log.debug({ Config })
   const store = SimpleStore.useStore()
+
+  useServiceWorker()
+  useEffect(() => log.debug({ Config }), [])
 
   // onRecaptcha = (token: string) => {
   //   userStorage.setProfileField('recaptcha', token, 'private')

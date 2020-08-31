@@ -1,14 +1,16 @@
 // @flow
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import AsyncStorage from '../utils/asyncStorage'
 import { isMobileSafari } from '../utils/platform'
 import restart from '../utils/restart'
+
+// hooks
 import SimpleStore from '../undux/SimpleStore'
 import { useErrorDialog } from '../undux/utils/dialog'
 import { hideSidemenu, showSidemenu, toggleSidemenu } from '../undux/utils/sidemenu'
 
 // utils
 import { useWrappedApi } from '../API/useWrappedApi'
+import AsyncStorage from '../../lib/utils/asyncStorage'
 
 // constants
 import { CLICK_DELETE_WALLET, fireEvent, LOGOUT } from '../../lib/analytics/analytics'

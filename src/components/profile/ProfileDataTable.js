@@ -36,6 +36,13 @@ const ProfileDataTable = ({
     [navigation],
   )
 
+  const verifyEdit = useCallback(
+    (field, content) => {
+      navigation.navigate('VerifyEdit', { field, content })
+    },
+    [navigation],
+  )
+
   const verifyEmail = useCallback(() => {
     if (profile.email !== storedProfile.email) {
       verifyEdit('email', profile.email)

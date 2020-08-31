@@ -2,9 +2,9 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
 import fontMaterialIcons from 'react-native-vector-icons/Fonts/MaterialIcons.ttf'
 import AsyncStorage from './lib/utils/asyncStorage'
+import './index.css'
 import App from './App'
 import './components/common/view/Icon/index.css'
 import { initStore, default as SimpleStore } from './lib/undux/SimpleStore'

@@ -1,4 +1,6 @@
-import { debounce, isFunction } from 'lodash'
+import { defer, from as fromPromise, throwError, timer } from 'rxjs'
+import { mergeMap, retryWhen } from 'rxjs/operators'
+import { assign, debounce, once } from 'lodash'
 
 // eslint-disable-next-line require-await
 export const delay = async (millis, resolveWithValue = null) =>
@@ -6,13 +8,40 @@ export const delay = async (millis, resolveWithValue = null) =>
 
 export const onPressFix = cb => debounce(cb, 500, { leading: true, trailing: false })
 
+export const retry = (asyncFn, retries = 5, interval = 0) =>
+  defer(() => fromPromise(asyncFn()))
+    .pipe(
+      retryWhen(attempts =>
+        attempts.pipe(
+          mergeMap((attempt, index) => {
+            const retryAttempt = index + 1
+
+            if (retryAttempt > retries) {
+              return throwError(attempt)
+            }
+
+            return timer(interval || 0)
+          }),
+        ),
+      ),
+    )
+    .toPromise()
+
 // eslint-disable-next-line require-await
-export const successState = async callbackOrPromise => {
-  let promise = callbackOrPromise
+export const promisifyGun = async callback =>
+  new Promise((resolve, reject) => {
+    const onAck = once(ack => {
+      const { err } = ack
 
-  if (isFunction(callbackOrPromise)) {
-    promise = callbackOrPromise()
-  }
+      if (!err) {
+        resolve(ack)
+      }
 
-  return promise.then(() => true).catch(() => false)
-}
+      const exception = new Error(err)
+
+      assign(exception, { ack })
+      reject(exception)
+    })
+
+    callback(onAck)
+  })
