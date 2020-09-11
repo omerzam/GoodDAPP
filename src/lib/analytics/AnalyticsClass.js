@@ -196,6 +196,10 @@ export class AnalyticsClass {
       return
     }
 
+    if (isMobileReactNative) {
+      return googleAnalytics.logEvent(event, data)
+    }
+
     googleAnalytics.push({ event, ...data })
   }
 
