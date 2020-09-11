@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "571915939867",
+    "firebase_url": "https://gooddollar-db7c7.firebaseio.com",
+    "project_id": "gooddollar-db7c7",
+    "storage_bucket": "gooddollar-db7c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571915939867:android:3518e2b123ad4b649388be",
+        "android_client_info": {
+          "package_name": "org.gooddollar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571915939867-a8v1h5fm7ihsd6b0f6qivcbfaljtsgai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD6pMyN9BHl7jMgT5XeWKRa_1s4JA2FUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571915939867-a8v1h5fm7ihsd6b0f6qivcbfaljtsgai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

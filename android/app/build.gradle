@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'com.google.gms.google-services'
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
@@ -210,6 +211,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-contacts')
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
 
   // Add v8-android - prebuilt libv8android.so into APK
     implementation 'org.chromium:v8-android:+'
