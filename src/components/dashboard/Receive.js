@@ -50,7 +50,7 @@ const Receive = ({ screenProps, styles }: ReceiveProps) => {
 
   return (
     <Wrapper>
-      <TopBar hideBalance={false} push={screenProps.push}>
+      <TopBar push={screenProps.push}>
         <View />
         {/* <AddressButton onPress={onPressReceiveToAddressButton} /> */}
       </TopBar>

@@ -150,7 +150,7 @@ const ReceiveByQR = ({ screenProps }) => {
   return (
     <>
       <Wrapper>
-        <TopBar hideBalance={true} hideProfile={false} profileAsLink={false} push={push}>
+        <TopBar hideBalance={true} push={push}>
           <View />
         </TopBar>
         <Section style={styles.bottomSection}>

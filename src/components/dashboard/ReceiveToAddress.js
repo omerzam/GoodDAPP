@@ -77,8 +77,6 @@ const ReceiveToAddress = ({ screenProps, styles, address }: TypeProps) => (
   <Wrapper>
     <TopBar
       push={screenProps.push}
-      hideProfile={false}
-      profileAsLink={false}
       hideBalance
       contentStyle={{ justifyContent: 'center' }}
       avatarSize={56}
