@@ -230,7 +230,7 @@ const AppSwitch = (props: LoadingProps) => {
       return
     }
 
-    // DeepLinking.subscribe(deepLinkingNavigation)
+    DeepLinking.subscribe(deepLinkingNavigation)
     return () => DeepLinking.unsubscribe()
   }, [DeepLinking.pathname, appState])
 
